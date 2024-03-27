@@ -1,0 +1,9 @@
+﻿/.vs
+/bin/Debug
+/Data/seedingData.json
+/obj
+/Properties/launchSettings.json
+/wwwroot/lib/bootstrap/scss
+/appsettings.Development.json
+/appsettings.json
+*.map

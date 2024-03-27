@@ -1,0 +1,44 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.product-info {
+    padding: 3px;
+    display:inline-block;
+    justify-items:center;
+    justify-content: center;
+    align-items: flex-end;
+    align-items: flex-end;
+}
+
+.alert {
+    display: inline-block;
+}
+
+.btn {
+    border: solid;
+}
+
+#nameProd {
+
+    font-size: larger;
+}
+
+#priceProd {
+    float: right;
+}

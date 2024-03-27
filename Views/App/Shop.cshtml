@@ -1,0 +1,58 @@
+﻿@model ShopViewModel
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-8 col-md-8">
+			<h3>Here is the list of products:</h3>
+			<div class="row products-list">
+				@foreach (Product p in Model.Products)
+				{
+					<div class="col-6 col-md-4">
+						<img src=@Url.Content($"~/img/{@p.PhotoId}.jpg") class="img-fluid"></img>
+						<form class="product-info">
+							<p id="nameProd">@p.Name (@p.Size)</p>
+							<p id="priceProd">@p.Price</p>
+							<p>@p.Description</p>
+							@if ((bool)@p.IsInStock)
+							{
+								<div class="alert alert-success" role="alert">In stock</div>
+								<button class="btn" asp-controller="Order" asp-action="AddItemToOrder" asp-route-productId="@p.Id">Add to cart</button>
+							}
+							else
+							{
+								<div class="alert alert-danger" role="alert">Out of stock</div>
+								<button class="btn" disabled>Add to cart</button>
+							}
+						</form>
+					</div>
+				}
+			</div>
+		</div>
+		<div class="col-4 col-md-4">
+			<h1>Cart:</h1>
+			@foreach (OrderItem i in Model.OrderItems)
+			{ 
+				<table class="table table-sm table-striped" style="border: solid">
+					<tbody>
+						<td>
+							<img src=@Url.Content($"~/img/{@i.Product.PhotoId}.jpg") class="img-responsive img-thumbnail float-left"></img>
+						</td>
+						<td>
+							<p>@i.Product.Name (@i.)</p>
+							<p>@i.Product.Price</p>
+							<p>@i.Product.Description</p>
+						</td>
+						<td>
+							<p>X @i.Quantity</p>
+						</td>
+					</tbody>
+				</table>
+			}
+			<form class="order-placement">
+				<button class="btn" asp-controller="Order" asp-action="PlaceOrder">Buy items</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+
